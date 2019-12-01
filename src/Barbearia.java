@@ -14,12 +14,12 @@ public class Barbearia {
 		}
 	}
 
-	public Cliente proximoCliente() {
+	synchronized public Cliente proximoCliente() {
 		return clientesNaFila.remover();
 	}
 
-	public void corteTerminado(Cliente c) { 
-		
-		
+	synchronized public void corteTerminado(Cliente cliente) { 
+		System.out.println(String.format("%s terminou o corte... saindo da barbearia", cliente));
+//		cliente.finalizouCorte();
 	}
 }
