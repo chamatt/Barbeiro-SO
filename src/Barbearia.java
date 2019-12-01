@@ -8,8 +8,11 @@ public class Barbearia {
 	
 	synchronized public boolean cortaCabelo(Cliente cliente) { 
 		if(clientesNaFila.isFull()) {
-			// do something
+			System.out.println(String.format("%s tentou entrar na barbearia, mas está lotada... indo dar uma voltinha", cliente));
+			return false;
 		}
+		
+		System.out.println(String.format("%s esperando corte...", cliente));
 		clientesNaFila.inserir(cliente);
 		cliente.esperarCorteCompletar();
 		return true;
