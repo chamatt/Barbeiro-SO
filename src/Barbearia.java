@@ -1,7 +1,7 @@
 
 public class Barbearia {
-	private FilaSincronizada<Cliente> clientesNaFila;
-	
+	public FilaSincronizada<Cliente> clientesNaFila;
+
 	public Barbearia(int assentos) {
 		this.clientesNaFila = new FilaSincronizada<Cliente>(assentos);
 	}
@@ -19,10 +19,11 @@ public class Barbearia {
 	}
 
 	synchronized public Cliente proximoCliente() {
-		return clientesNaFila.remover();
+		Cliente cliente = clientesNaFila.remover();
+		return cliente;
 	}
 
-	synchronized public void corteTerminado(Cliente cliente) { 
+	synchronized public void corteTerminado(Cliente cliente) {
 		cliente.completarCorte();
 		System.out.println(String.format("%s terminou o corte... saindo da barbearia", cliente));
 	}

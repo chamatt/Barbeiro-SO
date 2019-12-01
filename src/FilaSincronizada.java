@@ -10,7 +10,7 @@ public class FilaSincronizada<T> {
 	}
 
 	public synchronized T remover() {
-		while (fila.isEmpty()) {
+		while (this.isEmpty()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -35,6 +35,13 @@ public class FilaSincronizada<T> {
 	
 	public synchronized boolean isFull() {
 		if(fila.size() == capacidade) {
+			return true;
+		}
+		return false;
+	}
+	
+	public synchronized boolean isEmpty() {
+		if(fila.size() == 0) {
 			return true;
 		}
 		return false;
