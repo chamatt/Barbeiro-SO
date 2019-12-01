@@ -6,12 +6,13 @@ public class Barbearia {
 		this.clientesNaFila = new FilaSincronizada<Cliente>(assentos);
 	}
 	
-	public boolean cortaCabelo(Cliente c) { 
-		try {
-			
-		}catch(InterruptedException e){
-			
+	synchronized public boolean cortaCabelo(Cliente cliente) { 
+		if(clientesNaFila.isFull()) {
+			// do something
 		}
+		clientesNaFila.inserir(cliente);
+		cliente.esperarCorteCompletar();
+		return true;
 	}
 
 	synchronized public Cliente proximoCliente() {
@@ -19,7 +20,7 @@ public class Barbearia {
 	}
 
 	synchronized public void corteTerminado(Cliente cliente) { 
+		cliente.completarCorte();
 		System.out.println(String.format("%s terminou o corte... saindo da barbearia", cliente));
-//		cliente.finalizouCorte();
 	}
 }

@@ -22,7 +22,7 @@ public class FilaSincronizada<T> {
 	}
 	
 	public synchronized void inserir(T elemento) {
-		while(fila.size() == capacidade) {
+		while(this.isFull()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -32,4 +32,11 @@ public class FilaSincronizada<T> {
 		fila.add(elemento);
 		notifyAll();
 	}  
+	
+	public synchronized boolean isFull() {
+		if(fila.size() == capacidade) {
+			return true;
+		}
+		return false;
+	}
 }
