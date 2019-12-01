@@ -6,12 +6,12 @@ public class Barbearia {
 	}
 	
 	public boolean cortaCabelo(Cliente c) { 
-		return true; //todo
+		return true; //TODO
 	}
 
-	public Cliente proximoCliente() { 
-		return new Cliente(0); //todo
-	} 
+	public Cliente proximoCliente() {
+		return null; //TODO
+	}
 
 	public void corteTerminado(Cliente c) { 
 		

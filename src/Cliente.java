@@ -1,9 +1,10 @@
 
 public class Cliente extends Pessoa {
-
-	public Cliente(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
+	static InteiroAtomico tID = new InteiroAtomico();
+	
+	public Cliente() {
+		super();
+		this.id = tID.incrementAndGet();
 	}
-
+	
 }
