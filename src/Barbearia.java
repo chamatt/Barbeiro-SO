@@ -11,7 +11,7 @@ public class Barbearia {
 	}
 
 	public Cliente proximoCliente() {
-		return null; //TODO
+		return clientesNaFila.remover();
 	}
 
 	public void corteTerminado(Cliente c) { 
