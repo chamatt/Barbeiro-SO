@@ -1,9 +1,9 @@
 
 public class Barbeiro extends Pessoa {
+	static InteiroAtomico tID = new InteiroAtomico();
 
-	public Barbeiro(int id) {
-		super(id);
-		// TODO Auto-generated constructor stub
+	public Barbeiro() {
+		super();
+		this.id = tID.incrementAndGet();
 	}
-
 }
