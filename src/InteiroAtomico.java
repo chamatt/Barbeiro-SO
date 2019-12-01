@@ -11,11 +11,16 @@ public class InteiroAtomico {
 	}
 	
 	public synchronized void increment() {
-		inteiro++;
+		++inteiro;
 	}
 	
 	public synchronized int incrementAndGet() {
 		increment();
 		return get();
+	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(inteiro);
 	}
 }

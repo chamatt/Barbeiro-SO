@@ -1,8 +1,9 @@
 
 public class Barbearia {
-
-	public Barbearia() {
-		// TODO Auto-generated constructor stub
+	private FilaSincronizada<Cliente> clientesNaFila;
+	
+	public Barbearia(int assentos) {
+		this.clientesNaFila = new FilaSincronizada<Cliente>(assentos);
 	}
 	
 	public boolean cortaCabelo(Cliente c) { 
