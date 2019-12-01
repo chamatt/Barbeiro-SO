@@ -5,26 +5,24 @@ public class Barbearia {
 	public Barbearia(int assentos) {
 		this.clientesNaFila = new FilaSincronizada<Cliente>(assentos);
 	}
-	
-	synchronized public boolean cortaCabelo(Cliente cliente) { 
-		if(clientesNaFila.isFull()) {
-			System.out.println(String.format("%s tentou entrar na barbearia, mas está lotada... indo dar uma voltinha", cliente));
+
+	public boolean cortaCabelo(Cliente cliente) {
+//		System.out.println(cliente + " entrou na barbearia");
+		if (clientesNaFila.isFull()) {
 			return false;
 		}
-		
-		System.out.println(String.format("%s esperando corte...", cliente));
 		clientesNaFila.inserir(cliente);
+		System.out.println(String.format("%s esperando corte...", cliente));
 		cliente.esperarCorteCompletar();
 		return true;
 	}
 
-	synchronized public Cliente proximoCliente() {
+	public Cliente proximoCliente() {
 		Cliente cliente = clientesNaFila.remover();
 		return cliente;
 	}
 
-	synchronized public void corteTerminado(Cliente cliente) {
+	public void corteTerminado(Cliente cliente) {
 		cliente.completarCorte();
-		System.out.println(String.format("%s terminou o corte... saindo da barbearia", cliente));
 	}
 }

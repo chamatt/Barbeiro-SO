@@ -20,30 +20,37 @@ public class FilaSincronizada<T> {
 		T elemento = fila.remove();
 		return elemento;
 	}
-	
+
 	public synchronized void inserir(T elemento) {
-		while(this.isFull()) {
+		while (this.isFull()) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+//		System.out.println(elemento + " entrou na fila.");
 		fila.add(elemento);
 		notifyAll();
-	}  
-	
-	public synchronized boolean isFull() {
-		if(fila.size() == capacidade) {
-			return true;
-		}
-		return false;
 	}
-	
-	public synchronized boolean isEmpty() {
-		if(fila.size() == 0) {
-			return true;
+
+	public boolean isFull() {
+		synchronized (fila) {
+			if (fila.size() == capacidade) {
+				return true;
+			}
+			return false;
 		}
-		return false;
+
+	}
+
+	public boolean isEmpty() {
+		synchronized (fila) {
+			if (fila.size() == 0) {
+				return true;
+			}
+			return false;
+		}
+
 	}
 }
