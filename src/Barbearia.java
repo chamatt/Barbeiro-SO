@@ -7,7 +7,11 @@ public class Barbearia {
 	}
 	
 	public boolean cortaCabelo(Cliente c) { 
-		return true; //TODO
+		try {
+			
+		}catch(InterruptedException e){
+			
+		}
 	}
 
 	public Cliente proximoCliente() {
