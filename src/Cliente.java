@@ -1,6 +1,7 @@
 
 public class Cliente extends Pessoa implements Runnable{
 	static InteiroAtomico tID = new InteiroAtomico();
+	Barbearia barbearia;
 	
 	public Cliente() {
 		super();
@@ -8,7 +9,12 @@ public class Cliente extends Pessoa implements Runnable{
 	}
 	
 	public void run() {
-		System.out.println("Cliente " + this.getID() + " is running");
+		while(true) {
+			try {
+				int sleepTime = (int)(Math.random() * 3) + 3;
+				Thread.sleep(sleepTime*1000);
+			}catch(Exception e) {}
+		}
 	}
 	
 }
