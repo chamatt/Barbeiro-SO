@@ -10,18 +10,23 @@ public class Barbeiro extends Pessoa  implements Runnable{
 		this.barbearia = barbearia;
 	}
 
-	@Override
 	public void run() {
 		while (true) {
 			try {
-				Cliente cliente =  barbearia.proximoCliente();
-				int tempoDeCorte = gerarNumeroNoIntervalo(3,5);
+				Cliente cliente = barbearia.proximoCliente();
+				System.out.println(String.format("%s cortando cabelo com %s", cliente, this));
+				int tempoDeCorte = gerarNumeroNoIntervalo(3000,5000);
 				Thread.sleep(tempoDeCorte);
 				barbearia.corteTerminado(cliente);
 			} catch (InterruptedException e) {
 				
 			}
 		}
+	}
+	
+	@Override 
+	public String toString() {
+		return "Barbeiro " + getID();
 	}
 	
 }
